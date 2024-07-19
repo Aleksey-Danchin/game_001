@@ -1,0 +1,100 @@
+[gd_scene load_steps=15 format=3 uid="uid://c0pyll4qk3f86"]
+
+[ext_resource type="Texture2D" uid="uid://bhjmedscm3al5" path="res://assets/Kings and Pigs/Sprites/11-Door/Closiong (46x56).png" id="1_71nls"]
+[ext_resource type="Texture2D" uid="uid://chkdcubs66xu2" path="res://assets/Kings and Pigs/Sprites/11-Door/Idle.png" id="2_we4bo"]
+[ext_resource type="Texture2D" uid="uid://2po3aqmeectq" path="res://assets/Kings and Pigs/Sprites/11-Door/Opening (46x56).png" id="3_p04ic"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_db5x1"]
+atlas = ExtResource("1_71nls")
+region = Rect2(0, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv7il"]
+atlas = ExtResource("1_71nls")
+region = Rect2(46, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k3bt"]
+atlas = ExtResource("1_71nls")
+region = Rect2(92, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fle0v"]
+atlas = ExtResource("2_we4bo")
+region = Rect2(0, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nyi3"]
+atlas = ExtResource("3_p04ic")
+region = Rect2(0, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff1l2"]
+atlas = ExtResource("3_p04ic")
+region = Rect2(46, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aaqey"]
+atlas = ExtResource("3_p04ic")
+region = Rect2(92, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mp51h"]
+atlas = ExtResource("3_p04ic")
+region = Rect2(138, 0, 46, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kgkb"]
+atlas = ExtResource("3_p04ic")
+region = Rect2(184, 0, 46, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2gl8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_db5x1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv7il")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k3bt")
+}],
+"loop": false,
+"name": &"closing",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fle0v")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nyi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff1l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aaqey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mp51h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kgkb")
+}],
+"loop": false,
+"name": &"openning",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20xjg"]
+size = Vector2(45, 56)
+
+[node name="Door" type="StaticBody2D"]
+collision_layer = 16
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r2gl8")
+animation = &"openning"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_20xjg")

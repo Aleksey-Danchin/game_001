@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://kmbdfepjefyq"]
+
+[ext_resource type="Texture2D" uid="uid://bro33mce6u8wx" path="res://assets/Kings and Pigs/Sprites/08-Box/Hit.png" id="1_7sb0m"]
+[ext_resource type="Script" path="res://items/box/box.gd" id="1_qgifp"]
+[ext_resource type="Texture2D" uid="uid://ci8x6epxh44uv" path="res://assets/Kings and Pigs/Sprites/08-Box/Idle.png" id="2_blstk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj7k8"]
+atlas = ExtResource("1_7sb0m")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwm4x"]
+atlas = ExtResource("2_blstk")
+region = Rect2(0, 0, 22, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_621sc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qj7k8")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwm4x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kgj10"]
+size = Vector2(21, 16)
+
+[node name="Box" type="CharacterBody2D"]
+collision_layer = 8
+script = ExtResource("1_qgifp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_621sc")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_kgj10")

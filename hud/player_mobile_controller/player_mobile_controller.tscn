@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkwvdop1oc4qm"]
+
+[ext_resource type="Texture2D" uid="uid://bn80x1o2kkow2" path="res://assets/Mr. Breakfast's Free Prompts/png/arrow_left_light.png" id="1_jc3no"]
+[ext_resource type="Texture2D" uid="uid://cbtiypcn1hvtn" path="res://assets/Mr. Breakfast's Free Prompts/png/arrow_left_dark.png" id="2_0vepm"]
+[ext_resource type="Texture2D" uid="uid://bwtwxgagsn4ln" path="res://assets/Mr. Breakfast's Free Prompts/png/arrow_right_light.png" id="3_u8muo"]
+[ext_resource type="Texture2D" uid="uid://cvypmd3m0rwtb" path="res://assets/Mr. Breakfast's Free Prompts/png/arrow_right_dark.png" id="4_i6vxa"]
+[ext_resource type="Texture2D" uid="uid://1ol5nkvghth4" path="res://assets/Mr. Breakfast's Free Prompts/png/arrow_up_light.png" id="5_0g0dc"]
+[ext_resource type="Texture2D" uid="uid://bixhto4urknb3" path="res://assets/Mr. Breakfast's Free Prompts/png/arrow_up_dark.png" id="6_hwyud"]
+[ext_resource type="Texture2D" uid="uid://pvy207bbg27d" path="res://assets/Mr. Breakfast's Free Prompts/svg/xbox_b_red.svg" id="7_tr5lb"]
+[ext_resource type="Texture2D" uid="uid://lnfmepyvn4gt" path="res://assets/Mr. Breakfast's Free Prompts/svg/xbox_b_color_dark.svg" id="8_bvf18"]
+
+[node name="PlayerMobileController" type="CanvasLayer"]
+
+[node name="LeftButton" type="TouchScreenButton" parent="."]
+position = Vector2(20, 864)
+scale = Vector2(5, 5)
+texture_normal = ExtResource("1_jc3no")
+texture_pressed = ExtResource("2_0vepm")
+passby_press = true
+action = "left"
+
+[node name="RightButton" type="TouchScreenButton" parent="."]
+position = Vector2(210, 864.132)
+scale = Vector2(5, 5)
+texture_normal = ExtResource("3_u8muo")
+texture_pressed = ExtResource("4_i6vxa")
+passby_press = true
+action = "right"
+
+[node name="UpButton" type="TouchScreenButton" parent="."]
+position = Vector2(1992, 872)
+scale = Vector2(5, 5)
+texture_normal = ExtResource("5_0g0dc")
+texture_pressed = ExtResource("6_hwyud")
+action = "up"
+
+[node name="AttackButton" type="TouchScreenButton" parent="."]
+position = Vector2(2182, 888)
+scale = Vector2(3.9375, 3.9375)
+texture_normal = ExtResource("7_tr5lb")
+texture_pressed = ExtResource("8_bvf18")
+action = "attack"

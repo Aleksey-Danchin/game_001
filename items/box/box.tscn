@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://kmbdfepjefyq"]
+[gd_scene load_steps=13 format=3 uid="uid://kmbdfepjefyq"]
 
 [ext_resource type="Texture2D" uid="uid://bro33mce6u8wx" path="res://assets/Kings and Pigs/Sprites/08-Box/Hit.png" id="1_7sb0m"]
 [ext_resource type="Script" path="res://items/box/box.gd" id="1_qgifp"]
 [ext_resource type="Texture2D" uid="uid://ci8x6epxh44uv" path="res://assets/Kings and Pigs/Sprites/08-Box/Idle.png" id="2_blstk"]
+[ext_resource type="PackedScene" uid="uid://cgfj5y1ouqy67" path="res://components/HealthComponent.tscn" id="4_7giir"]
+[ext_resource type="Texture2D" uid="uid://bv0fncmlij8oh" path="res://assets/Kings and Pigs/Sprites/08-Box/Box Pieces 1.png" id="5_ig6em"]
+[ext_resource type="Texture2D" uid="uid://cwlsodvg628jh" path="res://assets/Kings and Pigs/Sprites/08-Box/Box Pieces 2.png" id="6_sscvn"]
+[ext_resource type="Texture2D" uid="uid://chpix0gbkxw0y" path="res://assets/Kings and Pigs/Sprites/08-Box/Box Pieces 3.png" id="7_j1280"]
+[ext_resource type="Texture2D" uid="uid://drr8ojvo6f0pq" path="res://assets/Kings and Pigs/Sprites/08-Box/Box Pieces 4.png" id="8_7usgw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qj7k8"]
 atlas = ExtResource("1_7sb0m")
@@ -19,8 +24,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_qj7k8")
 }],
 "loop": false,
-"name": &"hit",
-"speed": 1.0
+"name": &"hurt",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -28,7 +33,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 1.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kgj10"]
@@ -46,3 +51,61 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_kgj10")
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_7giir")]
+health_max = 2.0
+health = 2.0
+
+[node name="Parts" type="Node2D" parent="."]
+
+[node name="Part1" type="RigidBody2D" parent="Parts"]
+position = Vector2(-6, 3)
+collision_layer = 0
+collision_mask = 15
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parts/Part1"]
+texture = ExtResource("5_ig6em")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Parts/Part1"]
+build_mode = 1
+polygon = PackedVector2Array(-4, 4, -5, 4, -5, -4, 0, -4, 0, -3, 2, -3, 2, -2, 3, -2, 3, 0, 4, 0, 4, 4, 3, 4, 3, 5, -4, 5)
+
+[node name="Part2" type="RigidBody2D" parent="Parts"]
+position = Vector2(-6, -3)
+collision_layer = 0
+collision_mask = 15
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parts/Part2"]
+texture = ExtResource("6_sscvn")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Parts/Part2"]
+build_mode = 1
+polygon = PackedVector2Array(4, 5, 4, 4, 5, 4, 5, -4, 4, -4, 4, -5, -4, -5, -4, -4, -5, -4, -5, 5)
+
+[node name="Part3" type="RigidBody2D" parent="Parts"]
+position = Vector2(5, -6)
+collision_layer = 0
+collision_mask = 15
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parts/Part3"]
+texture = ExtResource("7_j1280")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Parts/Part3"]
+build_mode = 1
+polygon = PackedVector2Array(-5, -2, -5, 3, -4, 3, -4, 4, -3, 4, -3, 5, 4, 5, 4, 4, 5, 4, 5, -1, 4, -1, 4, -2)
+
+[node name="Part4" type="RigidBody2D" parent="Parts"]
+position = Vector2(5, 3)
+collision_layer = 0
+collision_mask = 15
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Parts/Part4"]
+texture = ExtResource("8_7usgw")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Parts/Part4"]
+build_mode = 1
+polygon = PackedVector2Array(-5, 4, -4, 4, -4, 5, 4, 5, 4, 4, 5, 4, 5, -1, 4, -1, 4, -2, -2, -2, -2, -1, -3, -1, -3, 0, -4, 0, -4, 1, -5, 1)

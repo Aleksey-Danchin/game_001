@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://6wh8wckm3s27"]
+
+[ext_resource type="AudioStream" uid="uid://df372c2dup456" path="res://assets/music.mp3" id="1_qcrlt"]
+
+[node name="Main" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_qcrlt")
+volume_db = -15.295

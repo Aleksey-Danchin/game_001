@@ -15,6 +15,10 @@ run/main_scene="res://world/world.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Main="*res://core/Main.tscn"
+
 [display]
 
 window/size/viewport_width=2400
@@ -23,7 +27,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/AS2P/plugin.cfg")
 
 [input]
 
@@ -74,6 +78,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_4="box"
 2d_physics/layer_5="door"
 2d_physics/layer_6="item"
+2d_physics/layer_7="diamon"
 
 [rendering]
 

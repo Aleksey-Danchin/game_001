@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-enum STATE { ATTACK, DEAD, DOOR_IN, DOOR_OUT, FALL, GROUND, HIT, IDLE, JUMP, RUN }
+signal hitted ()
+
+enum STATE { ATTACK, DEAD, DOOR_IN, DOOR_OUT, FALL, GROUND, HIT, IDLE, JUMP, RUN, HURT }
 
 const MAX_SPEED = 150.0
 const ACCELERATION = 500.0
@@ -11,7 +13,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var camera_2d = $Camera2D
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var collision_shape_2d = $CollisionShape2D
+@onready var hitbox_shape = $HitBox/CollisionShape2D
+@onready var hit_box := $HitBox
+@onready var animation_player = $AnimationPlayer
+@onready var collision_shape_2d = $HitBox/CollisionShape2D
+
+var hurting := false
 
 var state: STATE = STATE.IDLE
 
@@ -59,18 +66,20 @@ func _physics_process(delta):
 			jump_state()
 		STATE.RUN:
 			run_state()
+		STATE.HURT:
+			hurt_state()
 			
 	if velocity.x < 0:
-		animated_sprite_2d.flip_h = true
-		collision_shape_2d.position.x = 8
+		face_left()
 	elif velocity.x > 0:
-		animated_sprite_2d.flip_h = false
-		collision_shape_2d.position.x = -8
+		face_right()
 		
 	move_and_slide()
 			
 func attack_state ():
-	animated_sprite_2d.play('attack')
+	#animated_sprite_2d.play('attack')
+	animation_player.play("attack")
+	
 	velocity.x = 0
 	await animated_sprite_2d.animation_finished
 	state = STATE.IDLE
@@ -125,3 +134,27 @@ func run_state ():
 	elif velocity == Vector2.ZERO:
 		state = STATE.IDLE
 
+func hurt_state():
+	if not hurting:
+		hurting = true
+		animation_player.play('hurt')
+		await animated_sprite_2d.animation_finished
+		state = STATE.IDLE
+		hurting = false
+
+func hit():
+	hitted.emit()
+
+func face_left():
+	animated_sprite_2d.flip_h = true
+	animated_sprite_2d.position.x = -7
+	collision_shape_2d.position.x = -35
+
+func face_right():
+	animated_sprite_2d.flip_h = false
+	animated_sprite_2d.position.x = 7
+	collision_shape_2d.position.x = 35
+
+func hurt(hitbox: CollisionShape2D):
+	velocity.y -= 200
+	state = STATE.HURT

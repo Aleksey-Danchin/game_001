@@ -1,14 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://bespjtrs27a6h"]
+[gd_scene load_steps=13 format=3 uid="uid://bdcgemq8efjto"]
 
-[ext_resource type="Texture2D" uid="uid://bab5iqfyxuce1" path="res://assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="1_7285l"]
-[ext_resource type="Script" path="res://levels/level_1.gd" id="1_px17s"]
-[ext_resource type="Texture2D" uid="uid://csxnl5wo58ywv" path="res://assets/Kings and Pigs/Sprites/14-TileSets/Decorations (32x32).png" id="2_2tqn3"]
-[ext_resource type="PackedScene" uid="uid://c6u5w8ulo00i1" path="res://persons/pig/pig.tscn" id="2_5xvoc"]
-[ext_resource type="PackedScene" uid="uid://kmbdfepjefyq" path="res://items/box/box.tscn" id="3_5c51i"]
-[ext_resource type="PackedScene" uid="uid://c0pyll4qk3f86" path="res://items/door/door.tscn" id="8_mbq37"]
+[ext_resource type="Script" path="res://world/world.gd" id="1_lmbyh"]
+[ext_resource type="PackedScene" uid="uid://bkwvdop1oc4qm" path="res://hud/player_mobile_controller/player_mobile_controller.tscn" id="2_1gwar"]
+[ext_resource type="Script" path="res://levels/level_1.gd" id="3_m33hw"]
+[ext_resource type="PackedScene" uid="uid://bu0yts4r2486g" path="res://persons/human_king/human_king.tscn" id="4_3ug01"]
+[ext_resource type="Texture2D" uid="uid://bab5iqfyxuce1" path="res://assets/Kings and Pigs/Sprites/14-TileSets/Terrain (32x32).png" id="4_md6bi"]
+[ext_resource type="Texture2D" uid="uid://csxnl5wo58ywv" path="res://assets/Kings and Pigs/Sprites/14-TileSets/Decorations (32x32).png" id="5_eh83t"]
+[ext_resource type="PackedScene" uid="uid://c0pyll4qk3f86" path="res://items/door/door.tscn" id="6_yekfo"]
+[ext_resource type="PackedScene" uid="uid://kmbdfepjefyq" path="res://items/box/box.tscn" id="7_whnqx"]
+[ext_resource type="PackedScene" uid="uid://c6u5w8ulo00i1" path="res://persons/pig/pig.tscn" id="8_rsdbf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a6w42"]
-texture = ExtResource("1_7285l")
+texture = ExtResource("4_md6bi")
 texture_region_size = Vector2i(32, 32)
 2:2/0 = 0
 2:2/0/terrain_set = 0
@@ -905,7 +908,7 @@ texture_region_size = Vector2i(32, 32)
 13:11/0/terrains_peering_bit/top_side = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vr02"]
-texture = ExtResource("2_2tqn3")
+texture = ExtResource("5_eh83t")
 texture_region_size = Vector2i(32, 32)
 1:1/size_in_atlas = Vector2i(1, 3)
 1:1/0 = 0
@@ -994,10 +997,16 @@ navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_a6w42")
 sources/2 = SubResource("TileSetAtlasSource_5vr02")
 
-[node name="Level_1" type="Node2D"]
-script = ExtResource("1_px17s")
+[node name="Test01" type="Node2D"]
+script = ExtResource("1_lmbyh")
+metadata/_edit_horizontal_guides_ = [0.0]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="PlayerMobileController" parent="." instance=ExtResource("2_1gwar")]
+
+[node name="Level" type="Node2D" parent="."]
+script = ExtResource("3_m33hw")
+
+[node name="TileMap" type="TileMap" parent="Level"]
 tile_set = SubResource("TileSet_shhee")
 rendering_quadrant_size = 32
 format = 2
@@ -1017,57 +1026,72 @@ layer_4/name = "doors"
 layer_4/z_index = -96
 layer_4/tile_data = PackedInt32Array()
 
-[node name="Door" parent="." instance=ExtResource("8_mbq37")]
+[node name="Door" parent="Level" instance=ExtResource("6_yekfo")]
 position = Vector2(976, 164)
 
-[node name="Boxes" type="Node2D" parent="."]
+[node name="Boxes" type="Node2D" parent="Level"]
+visible = false
 
-[node name="Box" parent="Boxes" instance=ExtResource("3_5c51i")]
+[node name="Box" parent="Level/Boxes" instance=ExtResource("7_whnqx")]
 position = Vector2(117, 88)
 
-[node name="Box2" parent="Boxes" instance=ExtResource("3_5c51i")]
+[node name="Box2" parent="Level/Boxes" instance=ExtResource("7_whnqx")]
 position = Vector2(44, 247)
 
-[node name="Box3" parent="Boxes" instance=ExtResource("3_5c51i")]
+[node name="Box3" parent="Level/Boxes" instance=ExtResource("7_whnqx")]
 position = Vector2(43, 152)
 
-[node name="Box4" parent="Boxes" instance=ExtResource("3_5c51i")]
+[node name="Box4" parent="Level/Boxes" instance=ExtResource("7_whnqx")]
 position = Vector2(1139, 182)
 
-[node name="Box5" parent="Boxes" instance=ExtResource("3_5c51i")]
+[node name="Box5" parent="Level/Boxes" instance=ExtResource("7_whnqx")]
 position = Vector2(1070, 88)
 
-[node name="Box6" parent="Boxes" instance=ExtResource("3_5c51i")]
+[node name="Box6" parent="Level/Boxes" instance=ExtResource("7_whnqx")]
 position = Vector2(694, 55)
 
-[node name="Mobs" type="Node2D" parent="."]
+[node name="Mobs" type="Node2D" parent="Level"]
 
-[node name="Pig" parent="Mobs" instance=ExtResource("2_5xvoc")]
+[node name="Pig" parent="Level/Mobs" instance=ExtResource("8_rsdbf")]
 position = Vector2(183, 149)
 
-[node name="Pig2" parent="Mobs" instance=ExtResource("2_5xvoc")]
+[node name="Pig2" parent="Level/Mobs" instance=ExtResource("8_rsdbf")]
+visible = false
 position = Vector2(72, 146)
 
-[node name="Pig3" parent="Mobs" instance=ExtResource("2_5xvoc")]
+[node name="Pig3" parent="Level/Mobs" instance=ExtResource("8_rsdbf")]
+visible = false
 position = Vector2(72, 241)
 
-[node name="Pig4" parent="Mobs" instance=ExtResource("2_5xvoc")]
+[node name="Pig4" parent="Level/Mobs" instance=ExtResource("8_rsdbf")]
+visible = false
 position = Vector2(283, 211)
 
-[node name="Pig5" parent="Mobs" instance=ExtResource("2_5xvoc")]
+[node name="Pig5" parent="Level/Mobs" instance=ExtResource("8_rsdbf")]
+visible = false
 position = Vector2(390, 115)
 
-[node name="Pig6" parent="Mobs" instance=ExtResource("2_5xvoc")]
+[node name="Pig6" parent="Level/Mobs" instance=ExtResource("8_rsdbf")]
+visible = false
 position = Vector2(563, 49)
 
-[node name="Pig7" parent="Mobs" instance=ExtResource("2_5xvoc")]
+[node name="Pig7" parent="Level/Mobs" instance=ExtResource("8_rsdbf")]
+visible = false
 position = Vector2(609, 177)
 
-[node name="Pig8" parent="Mobs" instance=ExtResource("2_5xvoc")]
+[node name="Pig8" parent="Level/Mobs" instance=ExtResource("8_rsdbf")]
+visible = false
 position = Vector2(840, 116)
 
-[node name="Pig9" parent="Mobs" instance=ExtResource("2_5xvoc")]
+[node name="Pig9" parent="Level/Mobs" instance=ExtResource("8_rsdbf")]
+visible = false
 position = Vector2(987, 85)
 
-[node name="Pig10" parent="Mobs" instance=ExtResource("2_5xvoc")]
+[node name="Pig10" parent="Level/Mobs" instance=ExtResource("8_rsdbf")]
+visible = false
 position = Vector2(1107, 177)
+
+[node name="Diamonds" type="Node2D" parent="."]
+
+[node name="HumanKing" parent="." instance=ExtResource("4_3ug01")]
+position = Vector2(145, 145)

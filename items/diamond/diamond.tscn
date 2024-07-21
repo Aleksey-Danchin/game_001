@@ -1,0 +1,197 @@
+[gd_scene load_steps=18 format=3 uid="uid://d13jue4k771e6"]
+
+[ext_resource type="Texture2D" uid="uid://dakrhycp6u1sr" path="res://assets/Kings and Pigs/Sprites/12-Live and Coins/Big Diamond Idle (18x14).png" id="1_2m2bk"]
+[ext_resource type="Script" path="res://items/diamond/diamond.gd" id="1_i38sl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrsn6"]
+atlas = ExtResource("1_2m2bk")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wppbo"]
+atlas = ExtResource("1_2m2bk")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oabpv"]
+atlas = ExtResource("1_2m2bk")
+region = Rect2(36, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhpdn"]
+atlas = ExtResource("1_2m2bk")
+region = Rect2(54, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8018"]
+atlas = ExtResource("1_2m2bk")
+region = Rect2(72, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2twv"]
+atlas = ExtResource("1_2m2bk")
+region = Rect2(90, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfjix"]
+atlas = ExtResource("1_2m2bk")
+region = Rect2(108, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_edw0l"]
+atlas = ExtResource("1_2m2bk")
+region = Rect2(126, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mjqr"]
+atlas = ExtResource("1_2m2bk")
+region = Rect2(144, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5erp6"]
+atlas = ExtResource("1_2m2bk")
+region = Rect2(162, 0, 18, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a1v11"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrsn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wppbo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oabpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhpdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8018")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2twv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfjix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_edw0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mjqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5erp6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34rhy"]
+size = Vector2(12, 10)
+
+[sub_resource type="Animation" id="Animation_vy7dp"]
+resource_name = "pickup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -27)]
+}
+
+[sub_resource type="Animation" id="Animation_c3fvp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4fs81"]
+_data = {
+"RESET": SubResource("Animation_c3fvp"),
+"pickup": SubResource("Animation_vy7dp")
+}
+
+[node name="Diamond" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_i38sl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a1v11")
+animation = &"idle"
+frame_progress = 0.555311
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_34rhy")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_34rhy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4fs81")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

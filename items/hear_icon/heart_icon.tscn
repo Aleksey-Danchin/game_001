@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://bqci7hrvbpfdr"]
+
+[ext_resource type="Texture2D" uid="uid://dq854i2j2wm4v" path="res://assets/Kings and Pigs/Sprites/12-Live and Coins/Small Heart Idle (18x14).png" id="1_chmsi"]
+[ext_resource type="Script" path="res://items/hear_icon/heart_icon.gd" id="1_o66w5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8eprp"]
+atlas = ExtResource("1_chmsi")
+region = Rect2(0, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whuls"]
+atlas = ExtResource("1_chmsi")
+region = Rect2(18, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6vcy"]
+atlas = ExtResource("1_chmsi")
+region = Rect2(36, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ym44j"]
+atlas = ExtResource("1_chmsi")
+region = Rect2(54, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qau0x"]
+atlas = ExtResource("1_chmsi")
+region = Rect2(72, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07fas"]
+atlas = ExtResource("1_chmsi")
+region = Rect2(90, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w20eq"]
+atlas = ExtResource("1_chmsi")
+region = Rect2(108, 0, 18, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pj14"]
+atlas = ExtResource("1_chmsi")
+region = Rect2(126, 0, 18, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kmlf7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8eprp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whuls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6vcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ym44j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qau0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07fas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w20eq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pj14")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="HeartIcon" type="Node2D"]
+script = ExtResource("1_o66w5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 0)
+sprite_frames = SubResource("SpriteFrames_kmlf7")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.786824
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

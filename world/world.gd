@@ -4,11 +4,13 @@ extends Node2D
 @onready var player_mobile_controller = $PlayerMobileController
 @onready var level = $Level
 @onready var diamonds = $Diamonds
+@onready var stats = $Stats
 
 const DIAMOND = preload("res://items/diamond/diamond.tscn")
 
 func _ready():
 	human_king.hitted.connect(king_hit)
+	human_king.hurted.connect(king_hurt)
 	box_prepare()
 	mobs_prepare()
 
@@ -42,3 +44,6 @@ func diamon_pickup(diamond: Diamond):
 
 func pig_hit(pig: Pig):
 	human_king.hurt(pig.hitbox_shape)
+
+func king_hurt(damage: int):
+	stats.set_hearts(human_king.health_component.health)

@@ -1,15 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bk0viok0d5f48"]
+[gd_scene load_steps=6 format=3 uid="uid://bk0viok0d5f48"]
 
 [ext_resource type="PackedScene" uid="uid://bu0yts4r2486g" path="res://persons/human_king/human_king.tscn" id="1_1wph2"]
 [ext_resource type="Script" path="res://world/world.gd" id="1_2gv26"]
 [ext_resource type="PackedScene" uid="uid://bespjtrs27a6h" path="res://levels/level_1.tscn" id="2_8rblp"]
 [ext_resource type="PackedScene" uid="uid://bkwvdop1oc4qm" path="res://hud/player_mobile_controller/player_mobile_controller.tscn" id="4_vj8fj"]
+[ext_resource type="PackedScene" uid="uid://ws7rfqxdg75v" path="res://hud/stats/stats.tscn" id="5_gnl1e"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_2gv26")
 metadata/_edit_horizontal_guides_ = [0.0]
 
 [node name="PlayerMobileController" parent="." instance=ExtResource("4_vj8fj")]
+
+[node name="Stats" parent="." instance=ExtResource("5_gnl1e")]
 
 [node name="Level" parent="." instance=ExtResource("2_8rblp")]
 

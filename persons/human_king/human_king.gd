@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal hitted ()
+signal hurted (damage: int)
 
 enum STATE { ATTACK, DEAD, DOOR_IN, DOOR_OUT, FALL, GROUND, HIT, IDLE, JUMP, RUN, HURT }
 
@@ -17,6 +18,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var hit_box := $HitBox
 @onready var animation_player = $AnimationPlayer
 @onready var collision_shape_2d = $HitBox/CollisionShape2D
+@onready var health_component = $HealthComponent
 
 var hurting := false
 
@@ -119,12 +121,19 @@ func idle_state ():
 		state = STATE.RUN
 
 func jump_state ():
-	if velocity.y < 0:
-		animated_sprite_2d.play('jump')
-	elif not is_on_floor():
-		state = STATE.FALL
-	else:
+	animated_sprite_2d.play('jump')
+	
+	if Input.is_action_just_pressed('attack'):
+		state = STATE.ATTACK
+		return
+	
+	if is_on_floor():
 		state = STATE.IDLE
+		return
+		
+	if velocity.y > 0:
+		state = STATE.FALL
+		return
 
 func run_state ():
 	animated_sprite_2d.play('run')
@@ -158,3 +167,5 @@ func face_right():
 func hurt(hitbox: CollisionShape2D):
 	velocity.y -= 200
 	state = STATE.HURT
+	health_component.health -= 1
+	hurted.emit(1)
